@@ -1,0 +1,38 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <!-- User is common for dosadmin and doscustomer-->
+    <changeSet id="user table" author="pal.chandrakanta@gmail.com">
+        <createTable tableName="sb_user">
+            <column name="id" type="uuid">
+                <constraints nullable="false" uniqueConstraintName="PK_users" primaryKey="true"/>
+            </column>
+            <column name="email_id" type="varchar(1024)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mobile_no" type="varchar(20)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="password" type="LONGVARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(2048)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="first user" author="pal.chandrakanta@gmail.com">
+        <!-- password = encoded("password") -->
+        <insert tableName="sb_user">
+            <column name="id">b516e3aa-a3af-11e7-bbd2-63ad024569ce</column>
+            <column name="email_id">admin@covidash.com</column>
+            <column name="mobile_no">5708693854</column>
+            <column name="password">$2a$10$OoovkEwOkxdUXZMRDMBsU.sLFSvCXSClFXjt0J2mZIcNo201oCgTK</column>
+            <column name="name">DineoutSafe Admin</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
