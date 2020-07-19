@@ -1,4 +1,4 @@
-package com.cksutil.sassyboot.user.dto;
+package com.cksutil.sassyboot.user.requestdto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

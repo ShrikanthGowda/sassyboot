@@ -20,7 +20,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
-@Table(name = "covdsh_user")
+@Table(name = "sbt_user")
 public class UserEntity {
     @Id
     @Column(name = "id")

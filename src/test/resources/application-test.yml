@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sassyboot_test
+  session:
+    store-type: jdbc
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-testmaster.xml

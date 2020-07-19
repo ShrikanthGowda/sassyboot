@@ -1,7 +1,7 @@
 package com.cksutil.sassyboot.user;
 
 import com.cksutil.sassyboot.common.ApiResponse;
-import com.cksutil.sassyboot.user.dto.RegistrationDTO;
+import com.cksutil.sassyboot.user.requestdto.RegistrationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -20,6 +20,12 @@ public class UserController {
 
     @PostMapping(value = "/api/public/register")
     public ResponseEntity<ApiResponse> registerUser(@RequestBody @Validated RegistrationDTO registrationDTO){
+        userService.createUser(registrationDTO);
+        return ResponseEntity.ok().body(ApiResponse.success("User registration successfull."));
+    }
+
+    @PostMapping(value = "/api/app/users")
+    public ResponseEntity<ApiResponse> createAppUser(@RequestBody @Validated RegistrationDTO registrationDTO){
         userService.createUser(registrationDTO);
         return ResponseEntity.ok().body(ApiResponse.success("User registration successfull."));
     }

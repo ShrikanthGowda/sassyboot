@@ -1,7 +1,7 @@
 package com.cksutil.sassyboot.user;
 
 import com.cksutil.sassyboot.exception.ApiException;
-import com.cksutil.sassyboot.user.dto.RegistrationDTO;
+import com.cksutil.sassyboot.user.requestdto.RegistrationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <sbt_user id="1b187378-8b35-41f2-bad5-81a756b6db3b"
+                 mobile_no="5678789087"
+                 password="$2a$10$OoovkEwOkxdUXZMRDMBsU.sLFSvCXSClFXjt0J2mZIcNo201oCgTK"
+                 name="Existing user"
+                 email_id="rifco@covidash.com"/>
+</dataset>

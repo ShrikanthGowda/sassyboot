@@ -39,5 +39,5 @@ logging:
 app:
   security:
     csrf-token-header-name: X-CSRF-TOKEN
-    csrf-token-cookie-name: X-XSRF-TOKEN
+    csrf-token-cookie-name: XSRF-TOKEN
     auth-token-header-name: X-AUTH-TOKEN
