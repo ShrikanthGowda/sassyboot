@@ -88,7 +88,7 @@ public class POSTSessionTest extends BaseTest {
 
     @Test
     public void successOnCorrectEmailIdPassword() {
-        final SessionDTO sessionDTO = new SessionDTO("admin@covidash.com","password");
+        final SessionDTO sessionDTO = new SessionDTO("admin@sassyboot.com","password");
         final ResponseEntity<String> response = doPost(RequestDTO.createInstance(URL)
                 .setAuthToken(AUTH_TOKEN)
                 .setXSRFToken(XSRF_TOKEN)

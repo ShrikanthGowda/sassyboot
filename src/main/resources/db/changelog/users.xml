@@ -27,7 +27,7 @@
         <!-- password = encoded("password") -->
         <insert tableName="sbt_user">
             <column name="id">b516e3aa-a3af-11e7-bbd2-63ad024569ce</column>
-            <column name="email_id">admin@ssassyboot.com</column>
+            <column name="email_id">admin@sassyboot.com</column>
             <column name="mobile_no">5708693854</column>
             <column name="password">$2a$10$OoovkEwOkxdUXZMRDMBsU.sLFSvCXSClFXjt0J2mZIcNo201oCgTK</column>
             <column name="name">SassyBoot Admin</column>

@@ -2,6 +2,9 @@
 
 ### Development In progress
 
+[![Build Status](https://travis-ci.com/chandrakantap/sassyboot.svg?branch=master)](https://travis-ci.com/chandrakantap/sassyboot)
+
+
 SassyBoot is a simple springboot backend ready to be used for your next sass project. 
 Configured with spring-security and spring-session it can be used a backend for both 
 webapp as well as mobile app.
