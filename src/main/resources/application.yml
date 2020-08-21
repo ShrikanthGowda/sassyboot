@@ -16,6 +16,7 @@ spring:
     properties:
       hibernate:
         format_sql : true
+        enable_lazy_load_no_trans: true
   datasource:
     url: jdbc:postgresql://localhost:5432/sassyboot
   http:
@@ -26,7 +27,7 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
   session:
-    store-type: redis
+    store-type: JDBC
 
 
 logging:

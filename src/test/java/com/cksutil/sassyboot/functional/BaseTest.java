@@ -1,5 +1,7 @@
 package com.cksutil.sassyboot.functional;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
@@ -68,6 +70,11 @@ public class BaseTest {
                         && !StringUtils.isEmpty(httpCookie.getValue()))
                 .findFirst().map(HttpCookie::getValue)
                 .orElse(null);
+    }
+
+    protected void printJSON(String jsonString) throws JSONException {
+        JSONObject jsonObject = new JSONObject(jsonString);
+        System.out.println(jsonObject.toString(4));
     }
 
     @Autowired

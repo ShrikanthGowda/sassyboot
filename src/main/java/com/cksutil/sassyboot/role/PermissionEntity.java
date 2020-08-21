@@ -1,6 +1,5 @@
-package com.cksutil.sassyboot.user;
+package com.cksutil.sassyboot.role;
 
-import com.cksutil.sassyboot.role.RoleEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,34 +23,27 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
-@Table(name = "sbt_user")
-public class UserEntity {
+@Table(name = "permission")
+public class PermissionEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue
     private UUID id;
 
-    @Column(name = "email_id")
-    private String emailId;
-
-    @Column(name = "mobile_no")
-    private String mobileNo;
-
-    @Column(name = "password")
-    private String password;
-
     @Column(name = "name")
     private String name;
 
-    @Column(name = "failed_login_attempted")
-    private int failedLoginAttempt;
+    @Column(name = "display_name")
+    private String displayName;
 
-    @Column(name = "app_role")
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "parent_permission")
     @GeneratedValue
-    private UUID appRoleId;
+    private UUID parentPermissionId;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "app_role", insertable = false, updatable = false)
-    private RoleEntity appRole;
-
+    @JoinColumn(name = "parent_permission", insertable = false, updatable = false)
+    private PermissionEntity parentPermission;
 }

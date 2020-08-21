@@ -1,5 +1,6 @@
 package com.cksutil.sassyboot.auth.security;
 
+import com.cksutil.sassyboot.auth.resource.SessionUserResource;
 import com.cksutil.sassyboot.common.ApiResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
@@ -27,8 +28,9 @@ public class AuthenticationHandler implements AuthenticationSuccessHandler, Auth
         response.setStatus(HttpStatus.OK.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
+        final SessionUser sessionUser = (SessionUser)authentication.getPrincipal();
         objectMapper.writeValue(response.getWriter(),
-                ApiResponse.success("Successfully loggedin",authentication.getPrincipal()));
+                ApiResponse.success("Successfully loggedin", SessionUserResource.build(sessionUser)));
     }
 
     @Override

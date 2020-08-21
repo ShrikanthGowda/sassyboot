@@ -22,12 +22,19 @@ public class AppUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UserEntity> user = userRepository.findByEmailId(username);
-        return user.map(userEntity -> SessionUser.builder()
+        return user.map(userEntity->this.buildFromUserEntity(userEntity,username))
+                .orElseThrow(()->new UsernameNotFoundException(("User not found with provided credentials.")));
+    }
+
+    private SessionUser buildFromUserEntity(UserEntity userEntity,String userName){
+        SessionUser.SessionUserBuilder userBuilder = SessionUser.builder()
                 .userId(userEntity.getId())
-                .username(username)
+                .username(userName)
                 .name(userEntity.getName())
-                .password(userEntity.getPassword())
-                .roles()
-                .build()).orElseThrow(()->new UsernameNotFoundException(("User not found with provided credentials.")));
+                .password(userEntity.getPassword());
+        if(userEntity.getAppRole()!=null){
+            userBuilder.withRole(userEntity.getAppRole().getName());
+        }
+        return  userBuilder.build();
     }
 }

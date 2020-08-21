@@ -2,9 +2,11 @@ package com.cksutil.sassyboot.functional.session;
 
 import com.cksutil.sassyboot.functional.BaseTest;
 import com.cksutil.sassyboot.functional.RequestDTO;
+import org.json.JSONException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -78,7 +80,7 @@ public class POSTSessionTest extends BaseTest {
     @Test
     public void errorOnInvalidPassword() {
         Map<String,String[][]> abdf = new HashMap<>();
-        final SessionDTO sessionDTO = new SessionDTO("admin@covidash.com","invalid_password");
+        final SessionDTO sessionDTO = new SessionDTO("admin@sassyboot.com","invalid_password");
         final ResponseEntity<String> response = doPost(RequestDTO.createInstance(URL)
                 .setAuthToken(AUTH_TOKEN)
                 .setXSRFToken(XSRF_TOKEN)
@@ -87,13 +89,29 @@ public class POSTSessionTest extends BaseTest {
     }
 
     @Test
-    public void successOnCorrectEmailIdPassword() {
-        final SessionDTO sessionDTO = new SessionDTO("admin@sassyboot.com","password");
+    public void successOnCorrectEmailIdPassword() throws JSONException {
+            final SessionDTO sessionDTO = new SessionDTO("admin@sassyboot.com","password");
         final ResponseEntity<String> response = doPost(RequestDTO.createInstance(URL)
                 .setAuthToken(AUTH_TOKEN)
                 .setXSRFToken(XSRF_TOKEN)
                 .setPayload(sessionDTO));
         assertThat(response.getStatusCode(),equalTo(HttpStatus.OK));
+        final String expectedOutput = "{" +
+                "    \"payload\": {" +
+                "        \"accountLocked\": false," +
+                "        \"name\": \"SassyBoot Admin\"," +
+                "        \"accountExpired\": false," +
+                "        \"userId\": \"b516e3aa-a3af-11e7-bbd2-63ad024569ce\"," +
+                "        \"credentialsExpired\": false," +
+                "        \"authorities\": {" +
+                "            \"ROLE_SYSTEM_ADMIN\": true" +
+                "        }," +
+                "        \"enabled\": true" +
+                "    }," +
+                "    \"message\": \"Successfully loggedin\"," +
+                "    \"status\": \"OK\"" +
+                "}";
+        JSONAssert.assertEquals(expectedOutput, response.getBody(), true);
         AUTH_TOKEN=getAuthToken(response);
         XSRF_TOKEN=getXSRFToken(response);
     }
