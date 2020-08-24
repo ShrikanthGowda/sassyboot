@@ -9,8 +9,8 @@
         </or>
     </preConditions>
 
-    <include file="db/changelog/00_springsessiontables.xml"/>
-    <include file="db/changelog/01_role_permissions.xml"/>
-    <include file="db/changelog/02_users.xml"/>
+    <include file="db/changelog/00_springsessiontables.sql"/>
+    <include file="db/changelog/01_role_permissions_user.sql"/>
+    <include file="db/changelog/02_subscriptions.sql"/>
 
 </databaseChangeLog>
