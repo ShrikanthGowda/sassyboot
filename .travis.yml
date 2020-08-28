@@ -12,7 +12,7 @@ services:
   - postgresql
 
 before_script:
-  - psql -c 'create database sassyboot_test;' -U postgres
+  - psql -c 'create database sassyboot_testdb;' -U postgres
 
 script:
   - ./gradlew clean test
